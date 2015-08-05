@@ -1,0 +1,10 @@
+﻿@model Blog.WebUI.Models.BlogListViewModel
+
+@foreach (var blog in @Model.Blogs)
+{
+    @Html.Partial("BlogContent", blog)
+}
+</div>
+<div class="Paging">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("AllBlogs", new { page = x }))
+</div>

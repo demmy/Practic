@@ -1,0 +1,12 @@
+﻿@model Blog.WebUI.Models.PostListViewModel
+
+@foreach (var post in @Model.Posts)
+{
+    ViewBag.IdBlogs = post.Blog.Id;
+    @Html.Partial("PostContent", post)
+}
+</div>
+<div class="Paging">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Posts", new { id = ViewBag.IdBlogs, page = x }))
+</div>
+

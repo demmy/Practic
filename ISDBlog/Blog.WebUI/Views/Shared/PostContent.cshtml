@@ -1,0 +1,25 @@
+﻿@model Blog.Domain.Entities.Post
+
+<div class="col s12 m6 l4">
+    <div class="card z-depth-1 my_card">
+        <div class="myCardTitle">
+            @Model.Title
+        </div>
+        <div class="row" style="margin-left: 10px; margin-right: 10px; margin-top: 10px; color:#808080">
+            <span style="float:left;"> Автор: @Model.User.Name</span>
+            <span style="float:right;">Дата: @Model.PostedOn</span>
+        </div>
+        <div class="card-content">
+            <p>@Model.ShortDescription</p>
+        </div>
+        <div class="card-action">
+            @Html.ActionLink("Читать", "Post", "Blog",
+            new
+                {
+                    idPost = Model.Id
+                },
+            new { title = "Read" })
+        </div>
+    </div>
+</div>
+

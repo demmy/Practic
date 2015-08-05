@@ -1,0 +1,40 @@
+﻿@model Blog.Domain.Entities.Post
+
+<div class="container teal lighten-4">
+    <div class="center-align">
+        <h3>@Model.Title</h3>
+    </div>
+    <div class="divider"></div>
+    <div>
+        <span class="post-author"><b>АВТОР:</b> <i>@Model.User.Name</i></span>
+        <span class="post-date right"><b>ДАТА:</b> <i>@Model.PostedOn</i></span>
+    </div>
+    <div class="section" style="font-size:18px">
+        @Model.Description
+    </div>
+    <div class="divider"></div>
+    <h5>Comments</h5>
+    @Html.Partial("CommentContent", Model.Comments)
+    <br>
+    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <div class="center-align" style="margin-top: 10px;margin-bottom:20px">
+            <div class="waves-effect waves-light btn light-blue accent-3">
+                @Html.ActionLink("Добавить комментарий", "AddComment", "Account",
+            new
+            {
+                idPost = Model.Id
+            },
+            new
+            {
+                title = "AddComment",
+                @class = "white-text"
+            })
+            </div>
+        </div>
+        <div class="divider"></div>
+    }
+</div>
+</div>
+
+

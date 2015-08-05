@@ -1,0 +1,19 @@
+﻿@model IList<Blog.Domain.Entities.Comment>
+
+@foreach (var comment in Model)
+{
+    <div class="card-panel grey lighten-3 z-depth-1 hoverable">
+        <div class="row">
+            <div class="col s12 m2 l2 center-align">
+                <span class="person center" style="font-size:18px"><b>@comment.User.Name</b></span><br>
+                <span class="date-comment center" style="font-size:18px"><b>@comment.Commented</b></span>
+            </div>
+            <div class="col s12 m10 l10">
+                <p class="black-text">
+                    <i>@comment.Description</i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+}

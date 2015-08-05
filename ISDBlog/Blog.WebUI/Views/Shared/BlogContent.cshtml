@@ -1,0 +1,37 @@
+﻿@model Blog.Domain.Entities.BlogModel
+
+<div class="col s12 m6 l4">
+    <div class="card z-depth-1 my_card">
+        <div class="myCardTitle">
+            @Model.Title
+        </div>
+        <div class="row" style="margin-left: 10px; margin-right: 10px; margin-top: 10px; color:#808080">
+            <span style="float:left;"> Автор: @Model.User.Name</span>
+            <span style="float:right;">Дата: @Model.DateCreated</span>
+        </div>
+        <div class="card-content">
+            <p>@Model.Description</p>
+        </div>
+        <div class="card-action">
+            @Html.ActionLink("Читать", "Posts", "Blog",
+            new
+                {
+                    id = Model.Id
+                },
+            new { title = "Read" })
+
+            @if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                <div style="float: right">
+                    @Html.ActionLink("Добавить пост", "AddPost", "Account",
+                    new
+                        {
+                            idBlog = Model.Id
+                        },
+                        new { title = "Add post" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
